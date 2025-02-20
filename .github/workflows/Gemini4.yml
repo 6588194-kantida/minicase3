@@ -5,13 +5,12 @@
 # This workflow will build a Java project with Gradle and cache/restore any dependencies to improve the workflow execution time
 # For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-java-with-gradle
 
-name: Java CI with Gradle
+name: Java CI
 
 on:
   push:
-    branches: Kantida
-  pull_request:
-    branches: Kantida
+    branches: 
+      - Chayanid
 
 jobs: 
   build: 
@@ -20,23 +19,23 @@ jobs:
       - name: Checkout code      
         uses: actions/checkout@v3     
         with:   
-          fetch-depth: 0  # Ensures full history for pull requests
+          fetch-depth: 0  # Ensure full history for pull requests
 
       - name: Set up JDK 
         uses: actions/setup-java@v1 
         with: 
-          java-version: '17'  # Use stable LTS version
+          java-version: '17'  # Use LTS version
           distribution: 'temurin'
 
       - name: Build with Gradle
         run: |
           cd HolidayTravelVehicles
-          ./gradlew build  # Gradle handles compilation automatically
+          ./gradlew build  # Gradle compiles and manages dependencies
 
       - name: Run Tests
         run: |
           cd HolidayTravelVehicles
-          ./gradlew test  # Runs tests to ensure the build is working
+          ./gradlew test  # Run tests to validate the build
 
   dependency-submission:
     runs-on: ubuntu-latest
