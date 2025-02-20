@@ -10,7 +10,7 @@ name: Java CI
 on:
   push:
     branches: 
-      - Chayanid
+      - Kantida
 
 jobs: 
   build: 
